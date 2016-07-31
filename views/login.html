@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>{{title}}</title>
+
+		<link rel="stylesheet" type="text/css" href="../materialize/css/materialize.css" />
+		<link rel="stylesheet" type="text/css" href="../css/login.css" />
+		<script src="../jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../materialize/js/materialize.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body class="cyan">
+
+		<div id="login-page" class="row" style="width: 325px;">
+			<div class="col s12 z-depth-4 card-panel">
+				<form class="login-form" method="post" action="/login">
+					<div class="row">
+						<div class="input-field col s12 center">
+							<img src="../img/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+							<p class="center login-form-text">沉香大婶直播</p>
+						</div>
+					</div>
+					<div class="row margin">
+						<div class="input-field col s12">
+							<i class="mdi-social-person-outline prefix"></i>
+							<input id="username" name="username" type="text">
+							<label for="username" class="center-align">用户名</label>
+						</div>
+					</div>
+					<div class="row margin">
+						<div class="input-field col s12">
+							<i class="mdi-action-lock-outline prefix"></i>
+							<input id="password" name="password" type="password">
+							<label for="password" class="">密码</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m12 l12  login-text">
+							<input type="checkbox" id="remember-me">
+							<label for="remember-me">记住我</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<button class="btn waves-effect waves-light col s12">登陆</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6 m6 l6">
+							<p class="margin medium-small"><a href="page-register.html">现在注册!</a></p>
+						</div>
+						<div class="input-field col s6 m6 l6">
+							<p class="margin right-align medium-small"><a href="page-forgot-password.html">忘记密码 ?</a></p>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</body>
+
+</html>
