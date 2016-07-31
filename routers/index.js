@@ -28,6 +28,8 @@ module.exports = function(app) {
 		user.selectFun(client,req.body.username,function(result){
 			if(result[0] === undefined){
 				res.json({success:false,message:'没有该用户'})
+			}else{
+				
 			}
 		});
 

@@ -32,62 +32,15 @@
 			</div>
 		</nav>
 
-		<canvas id="chess" width="450px" height="450px"></canvas>
+  		<%    if(locals.islogin){  %>
+
+                                     session为真。
+
+                         <%  }else{  %>
+									aa
+
+                                 <% } %>       
 	</body>
 
-	<script type="text/javascript">
-		var chess = document.getElementById('chess');
-		var content = chess.getContext('2d');
-		var me = true;
-		var chessBrold = [];
-		for (var i = 0; i < 15; i++) {
-			chessBrold[i] = []
-			for (var j = 0; j < 15; j++) {
-				chessBrold[i][j] = 0;
-			}
-		}
-		window.onload = function() {
-			content.strokeStyle = '#BFBFBF';
-			for (var i = 0; i < 15; i++) {
-				content.moveTo(15 + i * 30, 15);
-				content.lineTo(15 + i * 30, 435);
-				content.stroke();
-				content.moveTo(15, 15 + i * 30);
-				content.lineTo(435, 15 + i * 30);
-				content.stroke();
-			}
-			//棋盘点击事件
-			chess.onclick = function(e) {
-				var x = e.offsetX;
-				var y = e.offsetY;
-				var i = Math.floor(x / 30);
-				var j = Math.floor(y / 30);
-				if (chessBrold[i][j] == 0) {
-					oneStep(i, j, me);
-					if (me) {
-						chessBrold[i][j] = 1
-					} else {
-						chessBrold[i][j] = 2
-					}
-					me = !me;
-				}
-			}
-			var oneStep = function(i, j, me) {
-				content.beginPath();
-				content.arc(15 + i * 30, 15 + j * 30, 13, 0, 2 * Math.PI);
-				content.closePath();
-				var grt = content.createRadialGradient(15 + i * 30 + 2, 15 + j * 30 - 2, 13, 15 + i * 30 + 2, 15 + j * 30 - 2, 0);
-				if (me) {
-					grt.addColorStop(0, '#0A0A0A');
-					grt.addColorStop(1, '#636766');
-				} else {
-					grt.addColorStop(0, '#D1D1D1');
-					grt.addColorStop(1, '#F9F9F9');
-				}
-				content.fillStyle = grt;
-				content.fill();
-			}
-		}
-	</script>
-
+	
 </html>
