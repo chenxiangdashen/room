@@ -1,16 +1,17 @@
-var user=require('../db/dbConnect');
-
+var userModal=require('../db/dbConnect');
+var pc = require('../db/pachong');
 
 module.exports = function(app) {
 
 	app.get('/', function(req, res) {
+		var data = {title: '首页'};
 		if(req.session.user){
-			
+			data.username = req.session.user.username;
+			data.isLogin = true;
 		}
 
-		res.render('index', {
-			title: '首页'
-		})
+		pc.get();
+		res.render('index',data)
 	});
 
 	app.get('/login', function(req, res) {
@@ -25,16 +26,23 @@ module.exports = function(app) {
 		})
 	});
 
+
+	app.get('/logout', function(req, res) {
+		req.session.user = null ;
+		res.redirect('/'); //登陆成功后跳转到主页
+	});
+
 	app.post('/login', function(req, res) {
 
-		client = user.connect();
+		client = userModal.connect();
 		
-		user.selectFun(client,req.body.username,function(result){
+		userModal.selectFun(client,req.body.username,function(result){
 			if(result[0] === undefined){
 				res.json({success:false,message:'没有该用户'})
 			}else{	
 				if(req.body.password == result [0].password){
-
+					req.session.user = {username : req.body.username}
+					res.redirect('/'); //登陆成功后跳转到主页
 				}
 			}
 		});

@@ -6,8 +6,11 @@
 		<title></title>
 
 		<link rel="stylesheet" type="text/css" href="../materialize/css/materialize.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
 		<script src="../jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../materialize/js/materialize.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../images/data.js" type="text/javascript" charset="utf-8"></script>
+		
 		<style type="text/css">
 			canvas {
 				display: block;
@@ -21,26 +24,23 @@
 
 		<nav class="indigo accent-3">
 			<div class="nav-wrapper">
+
 				<a href="#" class="brand-logo">首页</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="/login">登陆</a></li>
-					<li><a href="/reg">注册</a></li>
-					<li>
-						<a href="collapsible.html"></a>
-					</li>
-				</ul>
+					
+ 						{{#if isLogin}}
+					    <li>{{username}}</li>
+					    <li><a href="/logout">退出登录</a></li>
+					  {{else}}
+					   <li> <a href="/login">登陆</a></li>
+						<li><a href="/reg">注册</a></li>
+					  {{/if}}
+				</ul>	
 			</div>
 		</nav>
 
-  		<%    if(locals.islogin){  %>
-
-                                     session为真。
-
-                         <%  }else{  %>
-									aa
-
-                                 <% } %>       
+		 <div class="wrap" id="wrap"></div>
 	</body>
 
-	
+	<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
 </html>
