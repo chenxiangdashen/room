@@ -4,6 +4,10 @@ var user=require('../db/dbConnect');
 module.exports = function(app) {
 
 	app.get('/', function(req, res) {
+		if(req.session.user){
+			
+		}
+
 		res.render('index', {
 			title: '首页'
 		})
@@ -28,8 +32,10 @@ module.exports = function(app) {
 		user.selectFun(client,req.body.username,function(result){
 			if(result[0] === undefined){
 				res.json({success:false,message:'没有该用户'})
-			}else{
-				
+			}else{	
+				if(req.body.password == result [0].password){
+
+				}
 			}
 		});
 
