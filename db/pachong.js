@@ -1,8 +1,10 @@
-var request = require('request');
+﻿var request = require('request');
 var cheerio = require('cheerio');
 var async = require('async');
 var roomModle = require('./dbConnect');
 
+
+//这个是 测试
 exports.get = function(cb) {
 	var url = 'http://www.panda.tv/live_lists?status=2&order=person_num&pagenum=120&pageno=1&token=b902c644602f7b1ca7c6b2e0732f0d49&classification=';
 	var url_list = [];
