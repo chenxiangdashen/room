@@ -1,25 +1,47 @@
 var userModal = require('../db/dbConnect');
-var pc = require('../db/pachong-dy');
+
+// var config = require('../config.json');
+
+var dy = require('../db/pachong-dy');
+var pt = require('../db/pachong-pt');
+
 
 module.exports = function(app) {
-
-	app.get('/', function(req, res) {
-		var data = {
+	var data = {
 			title: '首页'
 		};
+	app.get('/', function(req, res) {
+		
 		if (req.session.user) {
 			data.username = req.session.user.username;
 			data.isLogin = true;
 		}
 
-			pc.get(function(list) {
-				data.list = list;
-				req.session.list = list;
-				res.render('index', data)
-			});
+		dy.get(function(list) {
+			data.list = list;
+			res.render('index', data)
+		});
 		
 
 	});
+
+	app.get('/pandaTv', function(req, res) {
+		pt.get(function(list) {
+			data.link='http://www.panda.tv';
+			data.list = list;
+			res.render('index', data)
+		});
+	});
+
+	app.get('/douyuTv', function(req, res) {
+		dy.get(function(list) {
+			data.link='http://www.douyu.com';
+			data.list = list;
+			res.render('index', data)
+		});
+	});
+
+
 
 	app.get('/login', function(req, res) {
 		res.render('login', {

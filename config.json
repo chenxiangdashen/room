@@ -1,0 +1,13 @@
+{
+	'name':'room',
+	'data':[
+		{
+			'name':'pandaTv',
+			'link':'http://www.panda.tv'
+		},
+		{
+			'name':'douyuTv',
+			'link':'http://www.panda.tv'
+		},
+	]
+}

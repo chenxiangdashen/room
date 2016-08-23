@@ -16,7 +16,6 @@ exports.get = function(cb) {
 				var $ = cheerio.load(data.body.toString());
 				$('li').each(function() {
 					var $me = $(this);
-					console.log($me.find('.mes-tit h3').text())
 					var item = {
 						roomName: $me.find('.mes-tit h3').text(),
 						id: $me.attr('data-rid'),
