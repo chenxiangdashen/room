@@ -20,7 +20,7 @@ exports.get = function(cb) {
 						roomName: $me.find('.mes-tit h3').text(),
 						id: $me.attr('data-rid'),
 						buzz: $me.find('.dy-num').text(),
-						cate: $me.find('.mes-tit span').text(),
+						cate: $me.find('.mes-tit span').text(),	
 						image: $me.find('img').attr('src')
 					}
 					list.push(item);

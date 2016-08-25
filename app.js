@@ -15,6 +15,10 @@ var multer = require('multer');
 var session = require('express-session');
 var routes = require('./routers/index');
 
+
+
+var pt = require('./db/pachong-pt');
+
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(express.static('public'));
@@ -37,5 +41,7 @@ app.use(bodyParser.urlencoded({
 routes(app);
 
 http.listen(8080, function() {
-	console.log('listen on the 8080')
+	pt.get(function(list) {
+		
+	});
 });

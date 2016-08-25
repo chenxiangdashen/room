@@ -25,21 +25,21 @@ module.exports = function(app) {
 
 	});
 
-	app.get('/pandaTv', function(req, res) {
-		pt.get(function(list) {
-			data.link='http://www.panda.tv';
-			data.list = list;
-			res.render('index', data)
-		});
-	});
+	// app.get('/pandaTv', function(req, res) {
+	// 	pt.get(function(list) {
+	// 		data.link='http://www.panda.tv';
+	// 		data.list = list;
+	// 		res.render('index', data)
+	// 	});
+	// });
 
-	app.get('/douyuTv', function(req, res) {
-		dy.get(function(list) {
-			data.link='http://www.douyu.com';
-			data.list = list;
-			res.render('index', data)
-		});
-	});
+	// app.get('/douyuTv', function(req, res) {
+	// 	dy.get(function(list) {
+	// 		data.link='http://www.douyu.com';
+	// 		data.list = list;
+	// 		res.render('index', data)
+	// 	});
+	// });
 
 
 

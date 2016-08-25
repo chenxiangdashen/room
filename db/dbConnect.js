@@ -39,7 +39,7 @@ function insertRoom(room, callback) {
 		if (err) throw err;
 
 		connection.connect();
-		var roomAddSql = 'INSERT INTO room(id,roomName,cate,buzz,image) VALUES(?,?,?,?,?)';
+		var roomAddSql = 'INSERT INTO room(roomId,roomName,cate,buzz,image) VALUES(?,?,?,?,?)';
 		var roomAddSql_Params = [room.id, room.roomName, room.cate, room.buzz, room.image];
 		// 执行sql
 		connection.query(roomAddSql, roomAddSql_Params, function(err, result) {
