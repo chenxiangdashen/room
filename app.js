@@ -18,6 +18,7 @@ var routes = require('./routers/index');
 
 
 var pt = require('./db/pachong-pt');
+var dy = require('./db/pachong-dy');
 
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
@@ -41,7 +42,13 @@ app.use(bodyParser.urlencoded({
 routes(app);
 
 http.listen(8080, function() {
-	pt.get(function(list) {
-		
-	});
+	pt.updateRoom()
+	// pt.deleteRoom(function(){
+	// 	pt.get();
+	// 	dy.get();
+	// });
+
+	// setInterval(function(){
+	// 	console.log(1)
+	// },1000*60*10)
 });

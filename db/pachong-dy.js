@@ -3,7 +3,7 @@ var cheerio = require('cheerio');
 var async = require('async');
 var roomModle = require('./dbConnect');
 
-exports.get = function(cb) {
+exports.get = function() {
 	var url = 'http://www.douyu.com/directory/columnRoom/game?page=1&isAjax=1';
 	var url_list = [];
 	var list = [];
@@ -29,7 +29,12 @@ exports.get = function(cb) {
 			});
 		},
 		T2: function(callback) {
-			cb(list);
+			 for(var i =0 ; i<list.length;i++){
+
+                	roomModle.insertRoom(list[i],function(){
+
+                });
+            }
 		}
 	});
 }

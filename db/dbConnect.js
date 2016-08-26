@@ -19,67 +19,68 @@ function selectFun(client, username, callback) {
 	});
 }
 
-function insertRoom(room, callback) {
+function deleteRoom (client , callback){
+	client.query('delete from room',function(err,results,fields){
+		if(err) throw err;
+		callback(results)
+	})
+}
 
-	//	var connection = mysql.createConnection({
-	//		host: 'localhost',
-	//		user: 'test',
-	//		password: '',
-	//		database: 'test'
-	//	});
-
-	var pool = mysql.createPool({
+var pool = mysql.createPool({
 		host: 'localhost',
 		user: 'test',
 		password: '',
 		database: 'test'
 	});
 
-	pool.getConnection(function(err, connection) {
-		if (err) throw err;
 
-		connection.connect();
+																						
+function insertRoom(room, callback) {
+	pool.getConnection(function(err, connection) {
+		if (err) throw err;														
 		var roomAddSql = 'INSERT INTO room(roomId,roomName,cate,buzz,image) VALUES(?,?,?,?,?)';
 		var roomAddSql_Params = [room.id, room.roomName, room.cate, room.buzz, room.image];
 		// 执行sql
 		connection.query(roomAddSql, roomAddSql_Params, function(err, result) {
-			connection.release();
-			connection.end();
+			
 			if (err) {
 				console.log('[INSERT ERROR] - ', err.message);
 				return;
+			}else{
+				
+				callback(result)
 			}
-			//	       console.log('-------INSERT----------');
-			//console.log('INSERT ID:',result.insertId);       
-			//	       console.log('INSERT ID:',result);       
-			//	       console.log('#######################'); 
-			callback(result)
+
+			connection.release();
+			
 		});
-		// 释放此连接
-		
-		
 	});
+}
 
-//	connection.connect();
-//	var roomAddSql = 'INSERT INTO room(id,roomName,cate,buzz,image) VALUES(?,?,?,?,?)';
-//	var roomAddSql_Params = [room.id, room.roomName, room.cate, room.buzz, room.image];
-//	//增 add
-//	// client.connect();
-//	connection.query(roomAddSql, roomAddSql_Params, function(err, result) {
-//		if (err) {
-//			console.log('[INSERT ERROR] - ', err.message);
-//			return;
-//		}
-//		//	       console.log('-------INSERT----------');
-//		//console.log('INSERT ID:',result.insertId);       
-//		//	       console.log('INSERT ID:',result);       
-//		//	       console.log('#######################'); 
-//		callback(result)
-//	});
-//	connection.end();
+function updateRoom(room, callback) {
+	pool.getConnection(function(err, connection) {
+		if (err) throw err;																																
+		var roomUpdateSql = "UPDATE room SET cate=?, buzz=? , image =? WHERE roomId =?";
+		var roomUpdateSql_Params = [room.cate,room.buzz,room.image,room.id]
+		// 执行sql
+		connection.query(roomUpdateSql, roomUpdateSql_Params, function(err, result) {
+			
+			if (err) {
+				console.log('[UPDATE ERROR] - ', err.message);
+				return;
+			}else{
+				
+				callback(result)
+			}
 
+			connection.release();
+			
+		});
+	});
 }
 
 exports.connect = connectServer;
+exports.deleteRoom = deleteRoom;
 exports.selectFun = selectFun;
 exports.insertRoom = insertRoom;
+exports.updateRoom = updateRoom;
