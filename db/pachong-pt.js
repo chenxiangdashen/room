@@ -22,7 +22,7 @@ exports.updateRoom = function(cb){
     getRoom(function(list){
         for(var i =0 ; i<list.length;i++){
              roomModle.updateRoom(list[i], function(result) {
-                console.log(result)
+              
             }); 
         }
     })
